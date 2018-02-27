@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MvvmPattern</string>
+    <string name="is">是</string>
+</resources>

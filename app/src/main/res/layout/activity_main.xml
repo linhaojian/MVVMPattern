@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.lhj.mvvmpattern.R"></import>
+        <variable
+            name="mainViewModel"
+            type="com.lhj.mvvmpattern.viewmodel.MainViewModel"
+            >
+        </variable>
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`age is : `+String.valueOf(mainViewModel.age)}"
+            android:visibility="@{((mainViewModel.age==0)?View.GONE : View.VISIBLE)}"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`nickname is : `+mainViewModel.nickname??`null`}" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`username is : `+mainViewModel.username??`null`}" />
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:userface="@{mainViewModel.userface}"/>
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="改变数值"
+            android:onClick="@{mainViewModel.onClick1}"/>
+    </LinearLayout>
+</layout>
