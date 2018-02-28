@@ -38,5 +38,9 @@
             android:layout_height="wrap_content"
             android:text="改变数值"
             android:onClick="@{mainViewModel.onClick1}"/>
+        <com.lhj.mvvmpattern.view.widget.CustomView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:onTouchListeners="@{mainViewModel.onTouchListeners}"/>
     </LinearLayout>
 </layout>

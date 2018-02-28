@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.lhj.mvvmpattern.model.dao.User2Dao;
 import com.lhj.mvvmpattern.model.pojo.User2;
+import com.lhj.mvvmpattern.view.widget.CustomView;
 
 import java.io.BufferedReader;
 
@@ -23,10 +24,11 @@ public class MainViewModel{
     public ObservableField<String> nickname = new ObservableField<>();
     public ObservableField<Integer> age = new ObservableField<>();
     public ObservableField<Integer> userface = new ObservableField<>();
+    public ObservableField<CustomView.OnTouchListeners> onTouchListeners = new ObservableField<>();
     private User2Dao user2Dao = new User2Dao();
 
     public MainViewModel(){
-
+        initCustomListeners();
     }
 
     /**
@@ -39,6 +41,22 @@ public class MainViewModel{
         imageView.setImageResource(userfaceResId);
     }
 
+    @BindingAdapter({"onTouchListeners"})
+    public static void setOnTouchListeners(CustomView customView, CustomView.OnTouchListeners onTouchListeners){
+        customView.setOnTouchListeners(onTouchListeners);
+    }
+
+    /**
+     *  初始化自定义VIEW中的自定义Listeners.
+     */
+    public void initCustomListeners(){
+        onTouchListeners.set(new CustomView.OnTouchListeners() {
+            @Override
+            public void onTouch(float x, float y) {
+                age.set((int) x);
+            }
+        });
+    }
 
     /**
      * 事件处理
