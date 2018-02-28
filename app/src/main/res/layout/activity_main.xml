@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{`age is : `+String.valueOf(mainViewModel.age)}"
+            android:text="@{`age ` +@string/is+`    : `+String.valueOf(mainViewModel.age)}"
             android:visibility="@{((mainViewModel.age==0)?View.GONE : View.VISIBLE)}"/>
         <TextView
             android:layout_width="match_parent"
